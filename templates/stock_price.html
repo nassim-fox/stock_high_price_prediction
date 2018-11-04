@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title> stock price </title>
+	
+	<link rel="shortcut icon" href="{{url_for('static',filename='icons/icon.png')}}" />
+
+    
+	{% include 'includes.html' %}
+	
+</head>
+
+<body>
+
+{% include 'modals/option_modal.html' %}
+{% include 'modals/abt_modal.html' %}
+
+
+<div class="row" style="margin-right: 20% ; margin-left: 20% ; margin-top: 3% ; ">
+    
+<button class="col-sm-4 btn btn-outline-primary" id="train">train</button>
+<button class="col-sm-4 btn btn-outline-primary" id="predict" style="margin-left: 10% ; ">predict</button>
+<div class="col-sm-1" style="margin-left: 2% ; ">
+    <button class="btn btn-link" data-toggle="modal" data-target="#option_modal"><i class="fa fa-cog"></i></button>
+</div>
+<div class="col-sm-1" style="margin-left: 2% ; ">
+    <button class="btn btn-link" data-toggle="modal" data-target="#abt_modal"><i class="fa fa-exclamation"></i></button>
+</div>
+
+</div>
+
+<div class="row">
+    <img src="{{url_for('static',filename='gf.gif')}}" style="height: 200px ; margin-left: 50% ; transform: translate(-50%) ; margin-top: 3% ; display: none ; " id="gf">
+</div>
+
+<div class="row" style="margin-left: 3% ;  margin-right: 3% ; ">
+<div style="margin-top:  3% ;  height: 400px !important; width : 60% !important ; ">
+   <canvas id="spchart" ></canvas>
+</div> 
+<div style="margin-top : 5% ;  ">
+    <div class="bg-light" style="padding : 2% ; ">
+        <p>This is a data prediction machine learning model, 
+        <br>it predicts data ( high value ) based on an <a href="https://www.kaggle.com/camnugent/sandp500" target="_blank">all S&P companies <br> historical data for past 5 years dataset</a> given the low, close and open.</p>
+        <p>This graph represents how the trained model's <br>prediction fits the data from the dataset. <br> Due to the fact that the dataset <br> was really huge (619kx7), i used 6k lines of <br>data to train the model. </p>
+        <p>You can change the number of epochs and <br>the learing rate and tune it how you <br>like to see how it will fit the data. </p>
+    </div>
+</div>
+</div>  
+
+   <script type="text/javascript" src="{{url_for('static',filename='js/stock_price.js')}}"></script>
+
+<div class="alert-primary rounded" style="margin-right: 20% ; margin-left: 20% ; text-align: center ;  ">
+    for a full understanding about learning rates and how to tune an ANN fellow this good article : <a href="https://towardsdatascience.com/understanding-learning-rates-and-how-it-improves-performance-in-deep-learning-d0d4059c1c10" target='_blank'>Understanding Learning Rates and How It Improves Performance in Deep Learning</a>
+</div>
+</body>
+</html>
